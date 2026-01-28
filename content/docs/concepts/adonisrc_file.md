@@ -4,14 +4,13 @@
 
 `该adonisrc.ts文件会被 AdonisJS 应用程序以外的其他工具导入。因此，您不得在此文件中编写任何特定于应用程序的代码或特定于环境的条件语句。`
 
-该文件包含运行应用程序所需的最低配置。但是，您可以通过运行==node ace inspect:rcfile==命令来查看完整的文件内容。
+该文件包含运行应用程序所需的最低配置。但是，您可以通过运行`node ace inspect:rcfile`命令来查看完整的文件内容。
 
 ```shell
 node ace inspect:rcfile
-
 ```
 
-您可以使用该服务访问已解析的 RCFile 内容==app==。
+您可以使用该服务访问已解析的 RCFile 内容`app`。
 
 ```ts
 import app from '@adonisjs/core/services/app'
@@ -21,11 +20,11 @@ console.log(app.rcFile)
 
 ## TypeScript
 
-该==typescript==属性告知框架和 Ace 命令您的应用程序使用 TypeScript。目前，此值始终设置为 ==true==。但是，我们稍后将允许使用 JavaScript 编写应用程序。
+该`typescript`属性告知框架和 Ace 命令您的应用程序使用 TypeScript。目前，此值始终设置为 `true`。但是，我们稍后将允许使用 JavaScript 编写应用程序。
 
 ## 目录
 
-一组目录及其路径，供脚手架命令使用。如果您决定重命名特定目录，请更新对象内部的相应路径，==directories==以便通知脚手架命令。
+一组目录及其路径，供脚手架命令使用。如果您决定重命名特定目录，请更新对象内部的相应路径，`directories`以便通知脚手架命令。
 
 ```ts
 {
@@ -65,12 +64,12 @@ console.log(app.rcFile)
 
 您可以定义导入文件的环境。有效选项包括：
 
-- ==web==环境指的是HTTP服务器启动的进程。
-- ==console==环境指的是除该命令之外的 Ace 命令==repl==。
-- ==repl==环境指的是使用该命令启动的进程==node ace repl==。
-- 最后，==test==环境指的是为运行测试而启动的进程。
+- `web`环境指的是HTTP服务器启动的进程。
+- `console`环境指的是除该命令之外的 Ace 命令`repl`。
+- `repl`环境指的是使用该命令启动的进程`node ace repl`。
+- 最后，`test`环境指的是为运行测试而启动的进程。
 
-`您可以使用该命令创建并注册预加载文件node ace make:preload。`
+您可以使用该命令创建并注册预加载文件`node ace make:preload`。
 
 ```ts
 {
@@ -91,7 +90,7 @@ console.log(app.rcFile)
 
 ## 元文件
 
-==metaFiles==该数组是创建生产版本时要复制文件到==build==文件夹中的的集合。
+`metaFiles`该数组是创建生产版本时要复制文件到`build`文件夹中的的集合。
 
 这些是非 TypeScript/JavaScript 文件，必须存在于生产版本中才能使应用程序正常运行。例如，Edge 模板、i18n 语言文件等。
 
@@ -156,7 +155,7 @@ console.log(app.rcFile)
 
 ## 测试
 
-该==tests==对象注册测试套件和测试运行器的一些全局设置。
+该`tests`对象注册测试套件和测试运行器的一些全局设置。
 
 另请参阅：[测试简介](https://docs.adonisjs.com/guides/testing/introduction)
 
@@ -179,11 +178,11 @@ console.log(app.rcFile)
 
 ```
 
-- ==timeout==定义所有测试的默认超时时间。
-- ==forceExit==测试完成后，立即强制退出应用程序进程。通常来说，优雅地退出是一种良好的编程实践。
-- ==suite.name==：测试套件的唯一名称。
-- ==suite.files==：用于导入测试文件的 glob 模式数组。
-- ==suite.timeout==：测试套件中所有测试的默认超时时间。
+- `timeout`定义所有测试的默认超时时间。
+- `forceExit`测试完成后，立即强制退出应用程序进程。通常来说，优雅地退出是一种良好的编程实践。
+- `suite.name`：测试套件的唯一名称。
+- `suite.files`：用于导入测试文件的 glob 模式数组。
+- `suite.timeout`：测试套件中所有测试的默认超时时间。
 
 ## providers
 
@@ -191,10 +190,10 @@ console.log(app.rcFile)
 
 默认情况下，提供程序会加载到所有环境中。但是，您也可以定义一个显式的环境数组来导入提供程序。
 
-- ==web==环境指的是HTTP服务器启动的进程。
-- ==console==环境指的是除该命令之外的 Ace 命令==repl==。
-- ==repl==环境指的是使用该命令启动的进程==node ace repl==。
-- 最后，==test==环境指的是为运行测试而启动的进程。
+- `web`环境指的是HTTP服务器启动的进程。
+- `console`环境指的是除该命令之外的 Ace 命令`repl`。
+- `repl`环境指的是使用该命令启动的进程`node ace repl`。
+- 最后，`test`环境指的是为运行测试而启动的进程。
 
 `提供程序按照其在数组中注册的顺序加载providers。`
 
@@ -230,9 +229,9 @@ console.log(app.rcFile)
 
 ## assetsBundler
 
-==serve==和==build==命令尝试检测应用程序用于编译前端资源的资源。
+`serve`和`build`命令尝试检测应用程序用于编译前端资源的资源。
 
-对[vite](https://vitejs.dev/)和[Webpack encore 的](https://github.com/symfony/webpack-encore)检测分别通过搜索==vite.config.js== 和 ==webpack.config.js==文件进行。
+对[vite](https://vitejs.dev/)和[Webpack encore 的](https://github.com/symfony/webpack-encore)检测分别通过搜索`vite.config.js` 和 `webpack.config.js`文件进行。
 
 但是，如果您使用不同的资源打包器，则可以在文件中按如下方式进行配置adonisrc.ts。
 
@@ -253,6 +252,6 @@ console.log(app.rcFile)
 
 ```
 
-- ==name==- 您使用的资源打包工具的名称。此信息为必填项，用于显示。
-- ==devServer.\*==- 启动开发服务器的命令及其参数。
-- ==build.\*==- 用于创建生产版本的命令及其参数。
+- `name`- 您使用的资源打包工具的名称。此信息为必填项，用于显示。
+- `devServer.\*`- 启动开发服务器的命令及其参数。
+- `build.\*`- 用于创建生产版本的命令及其参数。

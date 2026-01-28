@@ -18,7 +18,6 @@ import { RenderingPipeline } from '@dimerapp/edge'
 import relativeTime from 'dayjs/plugin/relativeTime.js'
 import { Collection, Renderer } from '@dimerapp/content'
 import { docsHook, docsTheme } from '@dimerapp/docs-theme'
-import path from 'node:path'
 
 import grammars from '../vscode_grammars/main.js'
 
