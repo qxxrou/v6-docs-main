@@ -104,7 +104,7 @@ edge.global('getPagination', function (collection: Collection, entry: Collection
 const pipeline = new RenderingPipeline()
 pipeline.use(docsHook).use((node) => {
   if (node.tagName === 'img') {
-    // return pipeline.component('elements/img', { node })
+    return pipeline.component('elements/img', { node })
   }
 })
 
