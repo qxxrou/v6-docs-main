@@ -1,0 +1,524 @@
+[
+  {
+    "permalink": "preface/introduction",
+    "title": "介绍",
+    "contentPath": "./preface/introduction.md",
+    "category": "前言"
+  },
+  {
+    "permalink": "preface/faqs",
+    "title": "常见问题",
+    "contentPath": "./preface/faqs.md",
+    "category": "前言"
+  },
+  {
+    "permalink": "preface/governance",
+    "title": "治理",
+    "contentPath": "./preface/governance.md",
+    "category": "前言"
+  },
+  {
+    "permalink": "preface/releases",
+    "title": "发布版本",
+    "contentPath": "./preface/releases.md",
+    "category": "前言"
+  },
+  {
+    "permalink": "preface/contribution-guide",
+    "title": "贡献指南",
+    "contentPath": "./preface/contribution_guide.md",
+    "category": "前言"
+  },
+  {
+    "permalink": "getting-started/installation",
+    "title": "安装",
+    "contentPath": "./getting_started/installation.md",
+    "category": "入门"
+  },
+  {
+    "permalink": "getting-started/configuration",
+    "title": "配置",
+    "contentPath": "./getting_started/configuration.md",
+    "category": "入门"
+  },
+  {
+    "permalink": "getting-started/environment-variables",
+    "title": "环境变量",
+    "contentPath": "./getting_started/environment_variables.md",
+    "category": "入门"
+  },
+  {
+    "permalink": "getting-started/folder-structure",
+    "title": "文件夹结构",
+    "contentPath": "./getting_started/folder_structure.md",
+    "category": "入门"
+  },
+  {
+    "permalink": "getting-started/deployment",
+    "title": "部署",
+    "contentPath": "./getting_started/deployment.md",
+    "category": "入门"
+  },
+  {
+    "permalink": "concepts/adonisrc-file",
+    "title": "AdonisRC 文件",
+    "contentPath": "./concepts/adonisrc_file.md",
+    "category": "概念"
+  },
+  {
+    "permalink": "concepts/async-local-storage",
+    "title": "异步本地存储",
+    "contentPath": "./concepts/async_local_storage.md",
+    "category": "概念"
+  },
+  {
+    "permalink": "concepts/assembler-hooks",
+    "title": "Assembler 钩子",
+    "contentPath": "./concepts/assembler_hooks.md",
+    "category": "概念"
+  },
+  {
+    "permalink": "concepts/application",
+    "title": "应用程序",
+    "contentPath": "./concepts/application.md",
+    "category": "概念"
+  },
+  {
+    "permalink": "concepts/application-lifecycle",
+    "title": "应用程序生命周期",
+    "contentPath": "./concepts/application_lifecycle.md",
+    "category": "概念"
+  },
+  {
+    "permalink": "concepts/config-providers",
+    "title": "配置 providers",
+    "contentPath": "./concepts/config_providers.md",
+    "category": "概念"
+  },
+  {
+    "permalink": "concepts/container-services",
+    "title": "容器服务",
+    "contentPath": "./concepts/container_services.md",
+    "category": "概念"
+  },
+  {
+    "permalink": "concepts/dependency-injection",
+    "title": "依赖注入",
+    "contentPath": "./concepts/dependency_injection.md",
+    "category": "概念"
+  },
+  {
+    "permalink": "concepts/extending-adonisjs",
+    "title": "扩展 AdonisJS 框架",
+    "contentPath": "./concepts/extending_the_framework.md",
+    "category": "概念"
+  },
+  {
+    "permalink": "concepts/hot-module-replacement",
+    "title": "热模块替换",
+    "contentPath": "./concepts/hmr.md",
+    "category": "概念"
+  },
+  {
+    "permalink": "concepts/http-overview",
+    "title": "HTTP 概览",
+    "contentPath": "./concepts/http_overview.md",
+    "category": "概念"
+  },
+  {
+    "permalink": "concepts/http-context",
+    "title": "HTTP 上下文",
+    "contentPath": "./concepts/http_context.md",
+    "category": "概念"
+  },
+  {
+    "permalink": "concepts/service-providers",
+    "title": "Service providers",
+    "contentPath": "./concepts/service_providers.md",
+    "category": "概念"
+  },
+  {
+    "permalink": "concepts/scaffolding",
+    "title": "脚手架",
+    "contentPath": "./concepts/scaffolding.md",
+    "category": "概念"
+  },
+  {
+    "permalink": "concepts/tooling-config",
+    "title": "工具配置",
+    "contentPath": "./concepts/tooling_config.md",
+    "category": "概念"
+  },
+  {
+    "permalink": "concepts/typescript-build-process",
+    "title": "TypeScript 构建过程",
+    "contentPath": "./concepts/typescript_build_process.md",
+    "category": "概念"
+  },
+  {
+    "permalink": "basics/routing",
+    "title": "路由",
+    "contentPath": "./basics/routing.md",
+    "category": "基础"
+  },
+  {
+    "permalink": "basics/controllers",
+    "title": "控制器",
+    "contentPath": "./basics/controllers.md",
+    "category": "基础"
+  },
+  {
+    "permalink": "basics/middleware",
+    "title": "中间件",
+    "contentPath": "./basics/middleware.md",
+    "category": "基础"
+  },
+  {
+    "permalink": "basics/body-parser",
+    "title": "请求体解析器",
+    "contentPath": "./basics/body_parser.md",
+    "category": "基础"
+  },
+  {
+    "permalink": "basics/request",
+    "title": "请求",
+    "contentPath": "./basics/request.md",
+    "category": "基础"
+  },
+  {
+    "permalink": "basics/response",
+    "title": "响应",
+    "contentPath": "./basics/response.md",
+    "category": "基础"
+  },
+  {
+    "permalink": "basics/validation",
+    "title": "验证",
+    "contentPath": "./basics/validation.md",
+    "category": "基础"
+  },
+  {
+    "permalink": "basics/file-uploads",
+    "title": "文件上传",
+    "contentPath": "./basics/file_uploads.md",
+    "category": "基础"
+  },
+  {
+    "permalink": "basics/session",
+    "title": "Session",
+    "contentPath": "./basics/session.md",
+    "category": "基础"
+  },
+  {
+    "permalink": "basics/cookies",
+    "title": "Cookies",
+    "contentPath": "./basics/cookies.md",
+    "category": "基础"
+  },
+  {
+    "permalink": "basics/exception-handling",
+    "title": "异常处理",
+    "contentPath": "./basics/exception_handling.md",
+    "category": "基础"
+  },
+  {
+    "permalink": "basics/debugging",
+    "title": "调试",
+    "contentPath": "./basics/debugging.md",
+    "category": "基础"
+  },
+  {
+    "permalink": "basics/vite",
+    "title": "Vite",
+    "contentPath": "./basics/vite.md",
+    "category": "基础"
+  },
+  {
+    "permalink": "basics/static-file-server",
+    "title": "静态文件服务",
+    "contentPath": "./basics/static_file_server.md",
+    "category": "基础"
+  },
+  {
+    "permalink": "database/introduction",
+    "title": "介绍",
+    "contentPath": "./database/introduction.md",
+    "category": "数据库"
+  },
+  {
+    "permalink": "database/lucid",
+    "title": "Lucid",
+    "contentPath": "./database/lucid.md",
+    "category": "数据库"
+  },
+  {
+    "permalink": "database/redis",
+    "title": "Redis",
+    "contentPath": "./database/redis.md",
+    "category": "数据库"
+  },
+  {
+    "permalink": "authentication/introduction",
+    "title": "介绍",
+    "contentPath": "./authentication/introduction.md",
+    "category": "验证"
+  },
+  {
+    "permalink": "authentication/verifying-user-credentials",
+    "title": "验证用户凭据",
+    "contentPath": "./authentication/verifying_user_credentials.md",
+    "category": "验证"
+  },
+  {
+    "permalink": "authentication/session-guard",
+    "title": "Session 守卫",
+    "contentPath": "./authentication/session_guard.md",
+    "category": "验证"
+  },
+  {
+    "permalink": "authentication/access-tokens-guard",
+    "title": "Access tokens 守卫",
+    "contentPath": "./authentication/access_tokens_guard.md",
+    "category": "验证"
+  },
+  {
+    "permalink": "authentication/basic-auth-guard",
+    "title": "Basic auth 守卫",
+    "contentPath": "./authentication/basic_auth_guard.md",
+    "category": "验证"
+  },
+  {
+    "permalink": "authentication/custom-auth-guard",
+    "title": "自定义权限守卫",
+    "contentPath": "./authentication/custom_auth_guard.md",
+    "category": "验证"
+  },
+  {
+    "permalink": "authentication/social-authentication",
+    "title": "社交认证",
+    "contentPath": "./authentication/social_authentication.md",
+    "category": "验证"
+  },
+  {
+    "permalink": "security/authorization",
+    "title": "授权",
+    "contentPath": "./security/authorization.md",
+    "category": "安全"
+  },
+  {
+    "permalink": "security/encryption",
+    "title": "加密",
+    "contentPath": "./security/encryption.md",
+    "category": "安全"
+  },
+  {
+    "permalink": "security/hashing",
+    "title": "哈希",
+    "contentPath": "./security/hashing.md",
+    "category": "安全"
+  },
+  {
+    "permalink": "security/cors",
+    "title": "CORS",
+    "contentPath": "./security/cors.md",
+    "category": "安全"
+  },
+  {
+    "permalink": "security/securing-ssr-applications",
+    "title": "保护 SSR 应用",
+    "contentPath": "./security/securing_ssr_applications.md",
+    "category": "安全"
+  },
+  {
+    "permalink": "security/rate-limiting",
+    "title": "限流",
+    "contentPath": "./security/rate_limiting.md",
+    "category": "安全"
+  },
+  {
+    "permalink": "views-and-templates/introduction",
+    "title": "介绍",
+    "contentPath": "./views-and-templates/introduction.md",
+    "category": "视图 & 模板"
+  },
+  {
+    "permalink": "views-and-templates/edgejs",
+    "title": "EdgeJS",
+    "contentPath": "./views-and-templates/edgejs.md",
+    "category": "视图 & 模板"
+  },
+  {
+    "permalink": "views-and-templates/inertia",
+    "title": "Inertia",
+    "contentPath": "./views-and-templates/inertia.md",
+    "category": "视图 & 模板"
+  },
+  {
+    "permalink": "testing/introduction",
+    "title": "介绍",
+    "contentPath": "./testing/introduction.md",
+    "category": "测试"
+  },
+  {
+    "permalink": "testing/http-tests",
+    "title": "HTTP 测试",
+    "contentPath": "./testing/http_tests.md",
+    "category": "测试"
+  },
+  {
+    "permalink": "testing/browser-tests",
+    "title": "Browser 测试",
+    "contentPath": "./testing/browser_tests.md",
+    "category": "测试"
+  },
+  {
+    "permalink": "testing/console-tests",
+    "title": "Console 测试",
+    "contentPath": "./testing/console_tests.md",
+    "category": "测试"
+  },
+  {
+    "permalink": "testing/database",
+    "title": "Database",
+    "contentPath": "./testing/database.md",
+    "category": "测试"
+  },
+  {
+    "permalink": "testing/mocks-and-fakes",
+    "title": "Mocks & Fakes",
+    "contentPath": "./testing/mocks_and_fakes.md",
+    "category": "测试"
+  },
+  {
+    "permalink": "digging-deeper/cache",
+    "title": "缓存",
+    "contentPath": "./digging_deeper/cache.md",
+    "category": "深入挖掘"
+  },
+  {
+    "permalink": "digging-deeper/drive",
+    "title": "Drive",
+    "contentPath": "./digging_deeper/drive.md",
+    "category": "深入挖掘"
+  },
+  {
+    "permalink": "digging-deeper/emitter",
+    "title": "事件发射器",
+    "contentPath": "./digging_deeper/emitter.md",
+    "category": "深入挖掘"
+  },
+  {
+    "permalink": "digging-deeper/health-checks",
+    "title": "健康检查",
+    "contentPath": "./digging_deeper/health_checks.md",
+    "category": "深入挖掘"
+  },
+  {
+    "permalink": "digging-deeper/i18n",
+    "title": "I18n",
+    "contentPath": "./digging_deeper/i18n.md",
+    "category": "深入挖掘"
+  },
+  {
+    "permalink": "digging-deeper/locks",
+    "title": "锁",
+    "contentPath": "./digging_deeper/locks.md",
+    "category": "深入挖掘"
+  },
+  {
+    "permalink": "digging-deeper/logger",
+    "title": "日志",
+    "contentPath": "./digging_deeper/logger.md",
+    "category": "深入挖掘"
+  },
+  {
+    "permalink": "digging-deeper/mail",
+    "title": "邮件",
+    "contentPath": "./digging_deeper/mail.md",
+    "category": "深入挖掘"
+  },
+  {
+    "permalink": "digging-deeper/repl",
+    "title": "Repl",
+    "contentPath": "./digging_deeper/repl.md",
+    "category": "深入挖掘"
+  },
+  {
+    "permalink": "digging-deeper/transmit",
+    "title": "Transmit",
+    "contentPath": "./digging_deeper/transmit.md",
+    "category": "深入挖掘"
+  },
+  {
+    "permalink": "digging-deeper/open-telemetry",
+    "title": "OpenTelemetry",
+    "contentPath": "./digging_deeper/open_telemetry.md",
+    "category": "深入挖掘"
+  },
+  {
+    "permalink": "ace/introduction",
+    "title": "介绍",
+    "contentPath": "./ace/introduction.md",
+    "category": "Ace 命令"
+  },
+  {
+    "permalink": "ace/creating-commands",
+    "title": "创建命令",
+    "contentPath": "./ace/creating_commands.md",
+    "category": "Ace 命令"
+  },
+  {
+    "permalink": "ace/arguments",
+    "title": "命令参数",
+    "contentPath": "./ace/args.md",
+    "category": "Ace 命令"
+  },
+  {
+    "permalink": "ace/flags",
+    "title": "命令标识",
+    "contentPath": "./ace/flags.md",
+    "category": "Ace 命令"
+  },
+  {
+    "permalink": "ace/prompts",
+    "title": "提示",
+    "contentPath": "./ace/prompts.md",
+    "category": "Ace 命令"
+  },
+  {
+    "permalink": "ace/terminal-ui",
+    "title": "Terminal UI",
+    "contentPath": "./ace/tui.md",
+    "category": "Ace 命令"
+  },
+  {
+    "permalink": "references/commands",
+    "title": "命令",
+    "contentPath": "./references/commands.md",
+    "category": "引用"
+  },
+  {
+    "permalink": "references/edge",
+    "title": "Edge 帮助和标签",
+    "contentPath": "./references/edge.md",
+    "category": "引用"
+  },
+  {
+    "permalink": "references/events",
+    "title": "事件",
+    "contentPath": "./references/events.md",
+    "category": "引用"
+  },
+  {
+    "permalink": "references/exceptions",
+    "title": "错误处理",
+    "contentPath": "./references/exceptions.md",
+    "category": "引用"
+  },
+  {
+    "permalink": "references/helpers",
+    "title": "帮助",
+    "contentPath": "./references/helpers.md",
+    "category": "引用"
+  }
+]
