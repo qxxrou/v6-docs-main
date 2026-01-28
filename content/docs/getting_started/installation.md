@@ -1,37 +1,37 @@
 ---
-summary: How to create and configure a new AdonisJS application.
+summary: 如何创建和配置新的 AdonisJS 应用程序。
 ---
 
-# Installation
+# 安装
 
-Before creating a new application, you should ensure that you have Node.js and npm installed on your computer. **AdonisJS needs Node.js version 20 or higher**.
+在创建新应用程序之前，你应该确保你的计算机上已安装 Node.js 和 npm。**AdonisJS 需要 Node.js 版本 20 或更高版本**。
 
-You may install Node.js using either the [official installers](https://nodejs.org/en/download/) or [Volta](https://docs.volta.sh/guide/getting-started). Volta is a cross-platform package manager that installs and runs multiple Node.js versions on your computer.
+你可以使用[官方安装程序](https://nodejs.org/en/download/)或 [Volta](https://docs.volta.sh/guide/getting-started) 安装 Node.js。Volta 是一个跨平台包管理器，可在你的计算机上安装和运行多个 Node.js 版本。
 
 ```sh
-// title: Verify Node.js version
+// title: 验证 Node.js 版本
 node -v
 # v22.0.0
 ```
 
 :::tip
-**Are you more of a visual learner?** - Checkout the [Let's Learn AdonisJS 6](https://adocasts.com/series/lets-learn-adonisjs-6) free screencasts series from our friends at Adocasts.
+**你更喜欢视觉学习吗？** - 查看我们朋友在 Adocasts 提供的 [Let's Learn AdonisJS 6](https://adocasts.com/series/lets-learn-adonisjs-6) 免费屏幕录制系列。
 :::
 
 
-## Creating a new application
+## 创建新应用程序
 
-You may create a new project using [npm init](https://docs.npmjs.com/cli/v7/commands/npm-init). These commands will download the [create-adonisjs](http://npmjs.com/create-adonisjs) initializer package and begin the installation process.
+你可以使用 [npm init](https://docs.npmjs.com/cli/v7/commands/npm-init) 创建新项目。这些命令将下载 [create-adonisjs](http://npmjs.com/create-adonisjs) 初始化程序包并开始安装过程。
 
-You may customize the initial project output using one of the following CLI flags.
+你可以使用以下 CLI 标志之一自定义初始项目输出。
 
-- `--kit`: Select the [starter kit](#starter-kits) for the project. You can choose between **web**, **api**, **slim** or **inertia**.
+- `--kit`: 为项目选择[启动工具包](#starter-kits)。你可以在 **web**、**api**、**slim** 或 **inertia** 之间进行选择。
 
-- `--db`: Specify the database dialect of your choice. You can choose between **sqlite**, **postgres**, **mysql**, or **mssql**.
+- `--db`: 指定你选择的数据库方言。你可以在 **sqlite**、**postgres**、**mysql** 或 **mssql** 之间进行选择。
 
-- `--git-init`: Initiate the git repository. Defaults to `false`.
+- `--git-init`: 初始化 git 仓库。默认为 `false`。
 
-- `--auth-guard`: Specify the authentication guard of your choice. You can choose between **session**, **access_tokens**, or **basic_auth**.
+- `--auth-guard`: 指定你选择的身份验证守卫。你可以在 **session**、**access_tokens** 或 **basic_auth** 之间进行选择。
 
 :::codegroup
 
@@ -42,114 +42,114 @@ npm init adonisjs@latest hello-world
 
 :::
 
-When passing CLI flags using the `npm init` command, make sure to use [double dashes twice](https://stackoverflow.com/questions/43046885/what-does-do-when-running-an-npm-command). Otherwise, `npm init` will not pass the flags to the `create-adonisjs` initializer package. For example:
+在使用 `npm init` 命令传递 CLI 标志时，确保使用[双破折号两次](https://stackoverflow.com/questions/43046885/what-does-do-when-running-an-npm-command)。否则，`npm init` 不会将标志传递给 `create-adonisjs` 初始化程序包。例如：
 
 ```sh
-# Create a project and get prompted for all options
+# 创建项目并获取所有选项的提示
 npm init adonisjs@latest hello-world
 
-# Create a project with MySQL
+# 使用 MySQL 创建项目
 npm init adonisjs@latest hello-world -- --db=mysql
 
-# Create a project with PostgreSQL and API starter kit
+# 使用 PostgreSQL 和 API 启动工具包创建项目
 npm init adonisjs@latest hello-world -- --db=postgres --kit=api
 
-# Create a project with API starter kit and access tokens guard
+# 使用 API 启动工具包和访问令牌守卫创建项目
 npm init adonisjs@latest hello-world -- --kit=api --auth-guard=access_tokens
 ```
 
-## Starter kits
+## 启动工具包
 
-Starter kits serve as a starting point for creating applications using AdonisJS. They come with an [opinionated folder structure](./folder_structure.md), pre-configured AdonisJS packages, and the necessary tooling you need during development.
+启动工具包用作使用 AdonisJS 创建应用程序的起点。它们带有[固执己见的文件夹结构](./folder_structure.md)、预配置的 AdonisJS 包以及开发期间所需的必要工具。
 
 
 :::note
 
-The official starter kits use ES modules and TypeScript. This combination allows you to use modern JavaScript constructs and leverage static-type safety.
+官方启动工具包使用 ES 模块和 TypeScript。这种组合允许你使用现代 JavaScript 结构并利用静态类型安全。
 
 :::
 
-### Web starter kit
+### Web 启动工具包
 
-The Web starter kit is tailored for creating traditional server renderer web apps. Do not let the keyword **"traditional"** discourage you. We recommend this starter kit if you make a web app with limited frontend interactivity.
+Web 启动工具包专为创建传统的服务器渲染 Web 应用程序而定制。不要让**"传统"**这个词打击你。如果你的 Web 应用程序具有有限的前端交互性，我们推荐此启动工具包。
 
-The simplicity of rendering HTML on the server using [Edge.js](https://edgejs.dev) will boost your productivity as you do not have to deal with complex build systems to render some HTML.
+使用 [Edge.js](https://edgejs.dev) 在服务器上渲染 HTML 的简单性将提高你的生产力，因为你无需处理复杂的构建系统来渲染一些 HTML。
 
-Later, you can use [Hotwire](https://hotwired.dev), [HTMX](http://htmx.org), or [Unpoly](http://unpoly.com) to make your applications navigate like an SPA and use [Alpine.js](http://alpinejs.dev) to create interactive widgets like a dropdown or a modal.
+稍后，你可以使用 [Hotwire](https://hotwired.dev)、[HTMX](http://htmx.org) 或 [Unpoly](http://unpoly.com) 使你的应用程序像 SPA 一样导航，并使用 [Alpine.js](http://alpinejs.dev) 创建交互式小部件，如下拉菜单或模态框。
 
 ```sh
 npm init adonisjs@latest -- -K=web
 
-# Switch database dialect
+# 切换数据库方言
 npm init adonisjs@latest -- -K=web --db=mysql
 ```
 
-The web starter kit comes with the following packages.
+web 启动工具包附带以下包。
 
 <table>
 <thead>
 <tr>
-<th width="180px">Package</th>
-<th>Description</th>
+<th width="180px">包</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
 <td><code>@adonisjs/core</code></td>
-<td>The framework&#39;s core has the baseline features you might reach for when creating backend applications.</td>
+<td>框架的核心具有你在创建后端应用程序时可能会用到的基线功能。</td>
 </tr>
 <tr>
 <td><code>edge.js</code></td>
-<td>The <a href="https://edgejs.dev">edge</a> template engine for composing HTML pages.</td>
+<td>用于编写 HTML 页面的 <a href="https://edgejs.dev">edge</a> 模板引擎。</td>
 </tr>
 <tr>
 <td><code>@vinejs/vine</code></td>
-<td><a href="https://vinejs.dev">VineJS</a> is one of the fastest validation libraries in the Node.js ecosystem.</td>
+<td><a href="https://vinejs.dev">VineJS</a> 是 Node.js 生态系统中最快的验证库之一。</td>
 </tr>
 <tr>
 <td><code>@adonisjs/lucid</code></td>
-<td>Lucid is a SQL ORM maintained by the AdonisJS core team.</td>
+<td>Lucid 是由 AdonisJS 核心团队维护的 SQL ORM。</td>
 </tr>
 <tr>
 <td><code>@adonisjs/auth</code></td>
-<td>The authentication layer of the framework. It is configured to use sessions.</td>
+<td>框架的身份验证层。它配置为使用会话。</td>
 </tr>
 <tr>
 <td><code>@adonisjs/shield</code></td>
-<td>A set of security primitives to keep your web apps safe from attacks like <strong>CSRF</strong> and <strong>XSS</strong>.</td>
+<td>一组安全原语，可保护你的 Web 应用程序免受 <strong>CSRF</strong> 和 <strong>XSS</strong> 等攻击。</td>
 </tr>
 <tr>
 <td><code>@adonisjs/static</code></td>
-<td>Middleware to serve static assets from the <code>/public</code> directory of your application.</td>
+<td>用于从应用程序的 <code>/public</code> 目录提供静态资产的中介件。</td>
 </tr>
 <tr>
 <td><code>vite</code></td>
-<td><a href="https://vitejs.dev/">Vite</a> is used for compiling the frontend assets.</td>
+<td><a href="https://vitejs.dev/">Vite</a> 用于编译前端资产。</td>
 </tr>
 </tbody></table>
 
 ---
 
-### API starter kit
+### API 启动工具包
 
-The API starter kit is tailored for creating JSON API servers. It is a trimmed-down version of the `web` starter kit. If you plan to build your frontend app using React or Vue, you may create your AdonisJS backend using the API starter kit.
+API 启动工具包专为创建 JSON API 服务器而定制。它是 `web` 启动工具包的精简版本。如果你计划使用 React 或 Vue 构建前端应用程序，你可以使用 API 启动工具包创建你的 AdonisJS 后端。
 
 ```sh
 npm init adonisjs@latest -- -K=api
 
-# Switch database dialect
+# 切换数据库方言
 npm init adonisjs@latest -- -K=api --db=mysql
 ```
 
-In this starter kit:
+在此启动工具包中：
 
-- We remove support for serving static files.
-- Do not configure the views layer and vite.
-- Turn off XSS and CSRF protection and enable CORS protection.
-- Use the ContentNegotiation middleware to send HTTP responses in JSON.
+- 我们取消了对提供静态文件的支持。
+- 不配置视图层和 vite。
+- 关闭 XSS 和 CSRF 保护并启用 CORS 保护。
+- 使用 ContentNegotiation 中介件以 JSON 格式发送 HTTP 响应。
 
-The API starter kit is configured with session-based authentication. However, if you wish to use tokens-based authentication, you can use the `--auth-guard` flag.
+API 启动工具包配置为基于会话的身份验证。然而，如果你希望使用基于令牌的身份验证，可以使用 `--auth-guard` 标志。
 
-See also: [Which authentication guard should I use?](../authentication/introduction.md#choosing-an-auth-guard)
+另请参阅：[我应该使用哪种身份验证守卫？](../authentication/introduction.md#choosing-an-auth-guard)
 
 ```sh
 npm init adonisjs@latest -- -K=api --auth-guard=access_tokens
@@ -157,122 +157,122 @@ npm init adonisjs@latest -- -K=api --auth-guard=access_tokens
 
 ---
 
-### Slim starter kit
+### Slim 启动工具包
 
-For minimalists, we have created a `slim` starter kit. It comes with just the core of the framework and the default folder structure. You may use it when you do not want any bells and whistles of AdonisJS.
+对于极简主义者，我们创建了一个 `slim` 启动工具包。它仅带有框架的核心和默认的文件夹结构。当你不希望 AdonisJS 有任何花哨的功能时，可以使用它。
 
 ```sh
 npm init adonisjs@latest -- -K=slim
 
-# Switch database dialect
+# 切换数据库方言
 npm init adonisjs@latest -- -K=slim --db=mysql
 ```
 
 ---
 
-### Inertia starter kit
+### Inertia 启动工具包
 
-[Inertia](https://inertiajs.com/) is a way to build server-driven single-page applications. You can use your favorite frontend framework ( React, Vue, Solid, Svelte ) to build the frontend of your application.
+[Inertia](https://inertiajs.com/) 是一种构建服务器驱动的单页应用程序的方法。你可以使用你最喜欢的前端框架（React、Vue、Solid、Svelte）来构建应用程序的前端。
 
-You can use the `--adapter` flag to choose the frontend framework you want to use. The available options are `react`, `vue`, `solid`, and `svelte`.
+你可以使用 `--adapter` 标志选择要使用的框架。可用选项有 `react`、`vue`、`solid` 和 `svelte`。
 
-You can also use the `--ssr` and `--no-ssr` flags to turn server-side rendering on or off.
+你还可以使用 `--ssr` 和 `--no-ssr` 标志打开或关闭服务器端渲染。
 
 ```sh
 npm init adonisjs@latest -- -K=inertia
 
-# React with server-side rendering
+# 使用服务器端渲染的 React
 npm init adonisjs@latest -- -K=inertia --adapter=react --ssr
 
-# Vue without server-side rendering
+# 没有服务器端渲染的 Vue
 npm init adonisjs@latest -- -K=inertia --adapter=vue --no-ssr
 ```
 
 ---
 
-### Bring your starter kit
+### 带上你的启动工具包
 
-Starter kits are pre-built projects hosted with a Git repository provider like GitHub, Bitbucket, or GitLab. You can also create your starter kits and download them as follows.
+启动工具包是托管在 Git 仓库提供商（如 GitHub、Bitbucket 或 GitLab）上的预构建项目。你还可以创建自己的启动工具包，并按如下方式下载它们。
 
 ```sh
 npm init adonisjs@latest -- -K="github_user/repo"
 
-# Download from GitLab
+# 从 GitLab 下载
 npm init adonisjs@latest -- -K="gitlab:user/repo"
 
-# Download from Bitbucket
+# 从 Bitbucket 下载
 npm init adonisjs@latest -- -K="bitbucket:user/repo"
 ```
 
-You can download private repos using Git+SSH authentication using the `git` mode.
+你可以使用 Git+SSH 身份验证使用 `git` 模式下载私有仓库。
 
 ```sh
 npm init adonisjs@latest -- -K="user/repo" --mode=git
 ```
 
-Finally, you can specify a tag, branch, or commit.
+最后，你可以指定标签、分支或提交。
 
 ```sh
-# Branch
+# 分支
 npm init adonisjs@latest -- -K="user/repo#develop"
 
-# Tag
+# 标签
 npm init adonisjs@latest -- -K="user/repo#v2.1.0"
 ```
 
-## Starting the development server
+## 启动开发服务器
 
-Once you have created an AdonisJS application, you may start the development server by running the `node ace serve` command.
+创建 AdonisJS 应用程序后，你可以通过运行 `node ace serve` 命令来启动开发服务器。
 
-Ace is a command line framework bundled inside the framework's core. The `--hmr` flag monitors the file system and performs [hot module replacement (HMR)](../concepts/hmr.md) for certain sections of your codebase.
+Ace 是捆绑在框架核心内的命令行框架。`--hmr` 标志监视文件系统并对代码库的某些部分执行[热模块替换 (HMR)](../concepts/hmr.md)。
 
 ```sh
 node ace serve --hmr
 ```
 
-Once the development server runs, you may visit [http://localhost:3333](http://localhost:3333) to view your application in a browser.
+开发服务器运行后，你可以访问 [http://localhost:3333](http://localhost:3333) 在浏览器中查看你的应用程序。
 
-## Building for production
+## 为生产环境构建
 
-Since AdonisJS applications are written in TypeScript, they must be compiled into JavaScript before running in production.
+由于 AdonisJS 应用程序是用 TypeScript 编写的，因此它们必须在生产环境中运行之前编译为 JavaScript。
 
-You may create the JavaScript output using the `node ace build` command. The JavaScript output is written to the `build` directory.
+你可以使用 `node ace build` 命令创建 JavaScript 输出。JavaScript 输出写入 `build` 目录。
 
-When Vite is configured, this command also compiles the frontend assets using Vite and writes the output to the `build/public` folder.
+配置 Vite 后，此命令还会使用 Vite 编译前端资产，并将输出写入 `build/public` 文件夹。
 
-See also: [TypeScript build process](../concepts/typescript_build_process.md).
+另请参阅：[TypeScript 构建过程](../concepts/typescript_build_process.md)。
 
 ```sh
 node ace build
 ```
 
-## Configuring the development environment
+## 配置开发环境
 
-While AdonisJS takes care of building the end-user applications, you may need additional tools to enjoy the development process and have consistency in your coding style.
+虽然 AdonisJS 负责构建最终用户应用程序，但你可能需要额外的工具来享受开发过程并在编码风格上保持一致性。
 
-We strongly recommend you use **[ESLint](https://eslint.org/)** to lint your code and use **[Prettier](https://prettier.io)** to re-format your code for consistency.
+我们强烈建议你使用 **[ESLint](https://eslint.org/)** 来检查你的代码，并使用 **[Prettier](https://prettier.io)** 重新格式化你的代码以保持一致性。
 
-The official starter kits come pre-configured with both ESLint and Prettier and use the opinionated presets from the AdonisJS core team. You can learn more about them in the [Tooling config](../concepts/tooling_config.md) section of the docs.
+官方启动工具包附带 ESLint 和 Prettier，并使用来自 AdonisJS 核心团队的固执己见的预设。你可以在文档的[工具配置](../concepts/tooling_config.md)部分中了解有关它们的更多信息。
 
-Finally, we recommend you install ESLint and Prettier plugins for your code editor so that you have a tighter feedback loop during the application development. Also, you can use the following commands to `lint` and `format` your code from the command line.
+最后，我们建议你为代码编辑器安装 ESLint 和 Prettier 插件，以便在应用程序开发期间有更紧密的反馈循环。此外，你可以使用以下命令从命令行`检查`和`格式化`你的代码。
 
 ```sh
-# Run ESLint
+# 运行 ESLint
 npm run lint
 
-# Run ESLint and auto-fix issues
+# 运行 ESLint 并自动修复问题
 npm run lint -- --fix
 
-# Run prettier
+# 运行 prettier
 npm run format
 ```
 
-## VSCode extensions
+## VSCode 扩展
 
-You can develop an AdonisJS application on any code editor supporting TypeScript. However, we have developed several extensions for VSCode to enhance the development experience further.
+你可以在支持 TypeScript 的任何代码编辑器上开发 AdonisJS 应用程序。然而，我们为 VSCode 开发了几个扩展，以进一步增强开发体验。
 
-- [**AdonisJS**](https://marketplace.visualstudio.com/items?itemName=jripouteau.adonis-vscode-extension) - View application routes, run ace commands, migrate the database, and read documentation directly from your code editor.
+- [**AdonisJS**](https://marketplace.visualstudio.com/items?itemName=jripouteau.adonis-vscode-extension) - 查看应用程序路由、运行 ace 命令、迁移数据库以及直接从你的代码编辑器阅读文档。
 
-- [**Edge**](https://marketplace.visualstudio.com/items?itemName=AdonisJS.vscode-edge) - Supercharge your development workflow with support for syntax highlighting, autocompletion, and code snippets.
+- [**Edge**](https://marketplace.visualstudio.com/items?itemName=AdonisJS.vscode-edge) - 通过支持语法高亮、自动完成和代码片段，增强你的开发工作流程。
 
-- [**Japa**](https://marketplace.visualstudio.com/items?itemName=jripouteau.japa-vscode) - Run tests without leaving your code editor using Keyboard shortcuts or run them directly from the activity sidebar.
+- [**Japa**](https://marketplace.visualstudio.com/items?itemName=jripouteau.japa-vscode) - 使用键盘快捷键或直接从活动侧边栏运行测试，无需离开你的代码编辑器即可运行测试。

@@ -1,54 +1,54 @@
 ---
-summary: Learn about general guidelines to deploy an AdonisJS application in production.
+summary: 了解在生产环境中部署 AdonisJS 应用程序的一般准则。
 ---
 
-# Deployment
+# 部署
 
-Deploying an AdonisJS application is no different than deploying a standard Node.js application. You need a server running `Node.js >= 20.6` along with `npm` to install production dependencies.
+部署 AdonisJS 应用程序与部署标准 Node.js 应用程序没有什么不同。你需要一个运行 `Node.js >= 20.6` 的服务器以及 `npm` 来安装生产依赖项。
 
-This guide will cover the generic guidelines to deploy and run an AdonisJS application in production. 
+本指南将介绍在生产环境中部署和运行 AdonisJS 应用程序的一般准则。
 
-## Creating production build
+## 创建生产构建
 
-As a first step, you must create the production build of your AdonisJS application by running the `build` command.
+作为第一步，你必须通过运行 `build` 命令创建 AdonisJS 应用程序的生产构建。
 
-See also: [TypeScript build process](../concepts/typescript_build_process.md)
+另请参阅：[TypeScript 构建过程](../concepts/typescript_build_process.md)
 
 ```sh
 node ace build
 ```
 
-The compiled output is written inside the `./build` directory. If you use Vite, its output will be written inside the `./build/public` directory.
+编译后的输出写入 `./build` 目录。如果你使用 Vite，其输出将写入 `./build/public` 目录。
 
-Once you have created the production build, you may copy the `./build` folder to your production server. **From now on, the build folder will be the root of your application**.
+创建生产构建后，你可以将 `./build` 文件夹复制到你的生产服务器。**从现在开始，构建文件夹将是你的应用程序的根目录**。
 
-### Creating a Docker image
+### 创建 Docker 镜像
 
-If you are using Docker to deploy your application, you may create a Docker image using the following `Dockerfile`.
+如果你正在使用 Docker 部署你的应用程序，你可以使用以下 `Dockerfile` 创建 Docker 镜像。
 
 ```dockerfile
 FROM node:22.16.0-alpine3.22 AS base
 
-# All deps stage
+# 所有依赖项阶段
 FROM base AS deps
 WORKDIR /app
 ADD package.json package-lock.json ./
 RUN npm ci
 
-# Production only deps stage
+# 仅生产依赖项阶段
 FROM base AS production-deps
 WORKDIR /app
 ADD package.json package-lock.json ./
 RUN npm ci --omit=dev
 
-# Build stage
+# 构建阶段
 FROM base AS build
 WORKDIR /app
 COPY --from=deps /app/node_modules /app/node_modules
 ADD . .
 RUN node ace build
 
-# Production stage
+# 生产阶段
 FROM base
 ENV NODE_ENV=production
 WORKDIR /app
@@ -58,16 +58,16 @@ EXPOSE 8080
 CMD ["node", "./bin/server.js"]
 ```
 
-Feel free to modify the Dockerfile to suit your needs.
+请随意修改 Dockerfile 以满足你的需求。
 
-## Configuring a reverse proxy
+## 配置反向代理
 
-Node.js applications are usually [deployed behind a reverse proxy](https://medium.com/intrinsic-blog/why-should-i-use-a-reverse-proxy-if-node-js-is-production-ready-5a079408b2ca) server like Nginx. So the incoming traffic on ports `80` and `443` will be handled by Nginx first and then forwarded to your Node.js application.
+Node.js 应用程序通常[部署在反向代理](https://medium.com/intrinsic-blog/why-should-i-use-a-reverse-proxy-if-node-js-is-production-ready-5a079408b2ca)服务器（如 Nginx）后面。因此，端口 `80` 和 `443` 上的传入流量将首先由 Nginx 处理，然后转发到你的 Node.js 应用程序。
 
-Following is an example Nginx config file you may use as the starting point.
+以下是你可用作起点的示例 Nginx 配置文件。
 
 :::warning
-Make sure to replace the values inside the angle brackets `<>`.
+确保替换尖括号 `<>` 内的值。
 :::
 
 ```nginx
@@ -91,31 +91,31 @@ server {
 }
 ```
 
-## Defining environment variables
+## 定义环境变量
 
-If you are deploying your application on a bare-bone server, like a DigitalOcean Droplet or an EC2 instance, you may use an `.env` file to define the environment variables. Ensure the file is stored securely and only authorized users can access it.
+如果你在裸机服务器（如 DigitalOcean Droplet 或 EC2 实例）上部署你的应用程序，你可以使用 `.env` 文件来定义环境变量。确保文件安全存储，只有授权用户才能访问它。
 
 :::note
-If you are using a deployment platform like Heroku or Cleavr, you may use their control panel to define the environment variables.
+如果你正在使用 Heroku 或 Cleavr 等部署平台，你可以使用他们的控制面板来定义环境变量。
 :::
 
-Assuming you have created the `.env` file in an `/etc/secrets` directory, you must start your production server as follows.
+假设你已在 `/etc/secrets` 目录中创建了 `.env` 文件，你必须按如下方式启动你的生产服务器。
 
 ```sh
 ENV_PATH=/etc/secrets node build/bin/server.js
 ```
 
-The `ENV_PATH` environment variable instructs AdonisJS to look for the `.env` file inside the mentioned directory.
+`ENV_PATH` 环境变量指示 AdonisJS 在提到的目录中查找 `.env` 文件。
 
-## Starting the production server
+## 启动生产服务器
 
-You may start the production server by running the `node server.js` file. However, it is recommended to use a process manager like [pm2](https://pm2.keymetrics.io/docs/usage/quick-start).
+你可以通过运行 `node server.js` 文件来启动生产服务器。然而，建议使用像 [pm2](https://pm2.keymetrics.io/docs/usage/quick-start) 这样的进程管理器。
 
-- PM2 will run your application in background without blocking the current terminal session.
-- It will restart the application, if your app crashes while serving requests.
-- Also, PM2 makes it super simple to run your application in [cluster mode](https://nodejs.org/api/cluster.html#cluster)
+- PM2 将在后台运行你的应用程序，而不会阻塞当前的终端会话。
+- 如果你的应用在服务请求时崩溃，它将重新启动应用程序。
+- 此外，PM2 使得在[集群模式](https://nodejs.org/api/cluster.html#cluster)下运行你的应用程序变得超级简单。
 
-Following is an example [pm2 ecosystem file](https://pm2.keymetrics.io/docs/usage/application-declaration) you may use as the starting point.
+以下是你可用作起点的示例 [pm2 生态系统文件](https://pm2.keymetrics.io/docs/usage/application-declaration)。
 
 ```js
 // title: ecosystem.config.js
@@ -133,35 +133,35 @@ module.exports = {
 ```
 
 ```sh
-// title: Start server
+// title: 启动服务器
 pm2 start ecosystem.config.js
 ```
 
-## Migrating database
+## 迁移数据库
 
-If you are using a SQL database, you must run the database migrations on the production server to create the required tables.
+如果你使用的是 SQL 数据库，你必须在生产服务器上运行数据库迁移以创建所需的表。
 
-If you are using Lucid, you may run the following command.
+如果你使用的是 Lucid，你可以运行以下命令。
 
 ```sh
 node ace migration:run --force
 ```
 
-The `--force` flag is required when running migrations in the production environment.
+在生产环境中运行迁移时需要 `--force` 标志。
 
-### When to run migrations
+### 何时运行迁移
 
-Also, it would be best if you always run the migrations before restarting the server. Then, if the migration fails, do not restart the server.
+此外，你应始终在重新启动服务器之前运行迁移。然后，如果迁移失败，请不要重新启动服务器。
 
-Using a managed service like Cleavr or Heroku, they can automatically handle this use case. Otherwise, you will have to run the migration script inside a CI/CD pipeline or run it manually through SSH.
+使用 Cleavr 或 Heroku 等托管服务，他们可以自动处理此用例。否则，你将不得不在 CI/CD 管道内运行迁移脚本或通过 SSH 手动运行它。
 
-### Do not rollback in production
+### 不要在生产中回滚
 
-Rolling back migrations in production is a risky operation. The `down` method in your migration files usually contains destructive actions like **drop the table**, or **remove a column**, and so on.
+在生产环境中回滚迁移是一项有风险的操作。迁移文件中的 `down` 方法通常包含破坏性操作，如**删除表**或**删除列**等。
 
-It is recommended to turn off rollbacks in production inside the config/database.ts file and instead, create a new migration to fix the issue and run it on the production server.
+建议在生产环境中的 config/database.ts 文件内关闭回滚，而是创建一个新的迁移来修复问题并在生产服务器上运行它。
 
-Disabling rollbacks in production will ensure that the `node ace migration:rollback` command results in an error.
+在生产环境中禁用回滚将确保 `node ace migration:rollback` 命令导致错误。
 
 ```js
 {
@@ -174,45 +174,45 @@ Disabling rollbacks in production will ensure that the `node ace migration:rollb
 }
 ```
 
-### Concurrent migrations
+### 并发迁移
 
-If you are running migrations on a server with multiple instances, you must ensure that only one instance runs the migrations.
+如果你在具有多个实例的服务器上运行迁移，你必须确保只有一个实例运行迁移。
 
-For MySQL and PostgreSQL, Lucid will obtain advisory locks to ensure that concurrent migration is not allowed. However, it is better to avoid running migrations from multiple servers in the first place.
+对于 MySQL 和 PostgreSQL，Lucid 将获得咨询锁以确保不允许并发迁移。然而，最好首先避免从多个服务器运行迁移。
 
-## Persistent storage for file uploads
+## 文件上传的持久存储
 
-Environments like Amazon EKS, Google Kubernetes, Heroku, DigitalOcean Apps, and so on, run your application code inside [an ephemeral filesystem](https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem), which means that each deployment, by default, will nuke the existing filesystem and creates a fresh one.
+Amazon EKS、Google Kubernetes、Heroku、DigitalOcean Apps 等环境在[临时文件系统](https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem)内运行你的应用程序代码，这意味着每次部署默认情况下都会销毁现有文件系统并创建一个新的文件系统。
 
-If your application allows users to upload files, you must use a persistent storage service like Amazon S3, Google Cloud Storage, or DigitalOcean Spaces instead of relying on the local filesystem.
+如果你的应用程序允许用户上传文件，你必须使用像 Amazon S3、Google Cloud Storage 或 DigitalOcean Spaces 这样的持久存储服务，而不是依赖于本地文件系统。
 
-## Writing logs
+## 写入日志
 
-AdonisJS uses the [`pino` logger](../digging_deeper/logger.md) by default, which writes logs to the console in JSON format. You can either set up an external logging service to read the logs from stdout/stderr, or forward them to a local file on the same server.
+AdonisJS 默认使用 [`pino` 日志记录器](../digging_deeper/logger.md)，它以 JSON 格式将日志写入控制台。你可以设置外部日志记录服务以从 stdout/stderr 读取日志，或将它们转发到同一服务器上的本地文件。
 
-## Serving static assets
+## 提供静态资源
 
-Serving static assets effectively is essential for the performance of your application. Regardless of how fast your AdonisJS applications are, the delivery of static assets plays a massive role to a better user experience.
+有效地提供静态资源对于应用程序的性能至关重要。无论你的 AdonisJS 应用程序有多快，静态资源的交付在更好的用户体验中都起着重要作用。
 
-### Using a CDN
+### 使用 CDN
 
-The best approach is to use a CDN (Content Delivery Network) for delivering the static assets from your AdonisJS application.
+最佳方法是使用 CDN（内容分发网络）来交付来自 AdonisJS 应用程序的静态资源。
 
-The frontend assets compiled using [Vite](../basics/vite.md) are fingerprinted by default, which means that the file names are hashed based on their content. This allows you to cache the assets forever and serve them from a CDN.
+使用 [Vite](../basics/vite.md) 编译的前端资源默认是指纹化的，这意味着文件名基于其内容进行哈希处理。这允许你永久缓存资源并从 CDN 提供它们。
 
-Depending upon the CDN service you are using and your deployment technique, you may have to add a step to your deployment process to move the static files to the CDN server. This is how it should work in a nutshell.
+根据你使用的 CDN 服务和部署技术，你可能必须在部署过程中添加一个步骤，以将静态文件移动到 CDN 服务器。这就是它应该如何在 nutshell 中工作。
 
-1. Update the `vite.config.js` and `config/vite.ts` configuration to [use the CDN URL](../basics/vite.md#deploying-assets-to-a-cdn).
+1. 更新 `vite.config.js` 和 `config/vite.ts` 配置以[使用 CDN URL](../basics/vite.md#deploying-assets-to-a-cdn)。
 
-2. Run the `build` command to compile the application and the assets.
+2. 运行 `build` 命令来编译应用程序和资源。
 
-3. Copy the output of `public/assets` to your CDN server. For example, [here is a command](https://github.com/adonisjs-community/polls-app/blob/main/commands/PublishAssets.ts) we use to publish the assets to an Amazon S3 bucket.
+3. 将 `public/assets` 的输出复制到你的 CDN 服务器。例如，[这是我们在](https://github.com/adonisjs-community/polls-app/blob/main/commands/PublishAssets.ts)用于将资源发布到 Amazon S3 存储桶的命令。
 
-### Using Nginx to deliver static assets
+### 使用 Nginx 交付静态资源
 
-Another option is to offload the task of serving assets to Nginx. If you use Vite to compile the front-end assets, you must aggressively cache all the static files since they are fingerprinted.
+另一个选择是将提供资源的任务卸载给 Nginx。如果你使用 Vite 编译前端资源，由于它们已被指纹化，你必须积极地缓存所有静态文件。
 
-Add the following block to your Nginx config file. **Make sure to replace the values inside the angle brackets `<>`**.
+将以下块添加到你的 Nginx 配置文件中。**确保替换尖括号 `<>` 内的值**。
 
 ```nginx
 location ~ \.(jpg|png|css|js|gif|ico|woff|woff2) {
@@ -224,12 +224,12 @@ location ~ \.(jpg|png|css|js|gif|ico|woff|woff2) {
 }
 ```
 
-### Using AdonisJS static file server
+### 使用 AdonisJS 静态文件服务器
 
-You can also rely on the [AdonisJS inbuilt static file server](../basics/static_file_server.md) to serve the static assets from the `public` directory to keep things simple.
+你也可以依赖 [AdonisJS 内置静态文件服务器](../basics/static_file_server.md)来提供来自应用程序 `public` 目录的静态资源，以保持简单。
 
-No additional configuration is required. Just deploy your AdonisJS application as usual, and the request for static assets will be served automatically.
+无需额外配置。只需像往常一样部署你的 AdonisJS 应用程序，对静态资源的请求将自动被提供。
 
 :::warning
-The static file server is not recommended for production use. It is best to use a CDN or Nginx to serve static assets.
+不建议在生产环境中使用静态文件服务器。最好使用 CDN 或 Nginx 来提供静态资源。
 :::
